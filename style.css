@@ -1,0 +1,243 @@
+/*
+  Set a background gradient that starts as light blue in the top left
+  and becomes a darker blue as you scroll down the page.
+*/
+body {
+  /* Linear gradient from top left to bottom right */
+  background: linear-gradient(135deg, #e0f2ff 0%, #1976d2 100%);
+  /* Make sure the gradient covers the whole page */
+  min-height: 100vh;
+  margin: 0;
+  /* Optional: smooth font for better look */
+  font-family: Arial, sans-serif;
+}
+
+/* You can add more styles below for other elements */
+
+/*
+  Add styles for the timeline cards so that when you hover over the heading (h2 or h3),
+  the image and the information (paragraph) slide in from the left.
+*/
+
+/* First, hide the image and paragraph by moving them to the left and making them invisible */
+section div img,
+section div p {
+  /* Start hidden to the left */
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+/* When you hover over the card's heading, show the image and paragraph */
+section div:hover img,
+section div:hover p {
+  /* Slide in to normal position */
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Make sure the card itself is positioned so the hover works */
+section div {
+  /* Add some space and background for clarity */
+  background: rgba(0, 0, 0, 0);
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(100, 100, 100, 0);
+  /* Make the transition look smooth */
+  transition: box-shadow 0.3s;
+
+  /* Use flexbox to arrange children (image and p) in a row */
+  display: flex;
+  flex-direction: column; /* Stack headings, then content */
+  align-items: stretch;
+}
+
+/* New wrapper for image and text content */
+.card-content {
+  position: relative;
+  z-index: 1;
+  /* Add some padding so text is readable */
+  padding: 20px;
+  width: 100%;
+}
+
+/* Make the card use the background image */
+section div {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Add a dark overlay for readability */
+section div::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(119, 119, 119, 0.19);
+  z-index: 0;
+}
+
+/* Hide the image tag (not needed anymore) */
+section div img {
+  display: none;
+}
+
+/* Slide in the text only */
+.card-content h2,
+.card-content h3,
+.card-content p {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+section div:hover .card-content h2,
+section div:hover .card-content h3,
+section div:hover .card-content p {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Make sure text is readable and spaced */
+.card-content h2, .card-content h3 {
+  margin: 0 0 8px 0;
+  text-shadow: 1px 1px 4px #000;
+}
+.card-content p {
+  margin: 0;
+  text-shadow: 1px 1px 4px #000;
+}
+
+/* Make the card text a bit smaller for better fit */
+.card-content h2 {
+  font-size: 1.1em;
+}
+.card-content h3 {
+  font-size: 1em;
+}
+.card-content p {
+  font-size: 0.95em;
+}
+
+/* When the screen is small, stack the image and text vertically */
+@media (max-width: 500px) {
+  .card-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  section div img {
+    max-width: 90%;
+  }
+}
+
+section div:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+
+/* Optional: make sure headings are easy to hover */
+section div h2, section div h3 {
+  cursor: pointer;
+}
+
+/* Center the main heading and subheading, and make them larger */
+header h1 {
+  /* Center the main heading */
+  text-align: center;
+  /* Make the font bigger */
+  font-size: 2.5em;
+  margin-top: 20px;
+}
+
+header p {
+  /* Center the subheading */
+  text-align: center;
+  /* Make the font bigger */
+  font-size: 1.3em;
+  max-width: 700px;
+  margin: 15px auto;
+}
+
+/* Remove the width setting for the Intel logo so it uses its original size */
+header img {
+  /* Remove width and height so the image displays at its natural size */
+  width: 50%; /* Adjust as needed */
+  height: auto;
+  display: block;
+  margin: 0 auto 10px auto; /* Still center the logo above the heading */
+}
+
+/*
+  Arrange the timeline cards in rows of three using simple flexbox.
+  This is beginner-friendly and does not use CSS grid.
+*/
+
+section {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap to the next line */
+  justify-content: center; /* Center the rows */
+  gap: 24px; /* Space between cards */
+}
+
+section div {
+  flex: 0 1 30%; /* Each card takes about 1/3 of the row */
+  min-width: 260px; /* Prevent cards from getting too small */
+  max-width: 350px; /* Prevent cards from getting too wide */
+  box-sizing: border-box;
+}
+
+/* Add a comment for students */
+/*
+  The cards are now arranged in rows of three using flexbox.
+  'flex-wrap: wrap' lets the cards move to the next line if needed.
+  'flex: 0 1 30%' makes each card about 1/3 of the row.
+*/
+
+/*
+  When you move your mouse over a card, the image and information will slide in from the left.
+  This uses simple CSS transitions and the :hover selector.
+
+  The main heading (h1) and subheading (p) in the header are now centered and larger.
+  'text-align: center' centers the text, and 'font-size' makes it bigger.
+
+  Now, the image and the paragraph in each card will appear side by side.
+  This uses display: flex, which is a simple way to arrange items in a row.
+*/
+
+/*
+  Add tap-to-reveal for card text on mobile devices.
+  On small screens, tapping a card will show or hide its text.
+  This uses a simple CSS class and a little JavaScript for beginners.
+*/
+
+@media (max-width: 600px) {
+  /* By default, hide the text on mobile */
+  .card-content h2,
+  .card-content h3,
+  .card-content p {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* When the card is tapped (has .show-text), show the text */
+  section div.show-text .card-content h2,
+  section div.show-text .card-content h3,
+  section div.show-text .card-content p {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* Add a comment for students */
+/*
+  On mobile, tapping a card will show or hide its text.
+  This is done by toggling the .show-text class with JavaScript.
+*/
