@@ -68,24 +68,112 @@
     }
     /* Hero section for the columns */
     .columns-hero {
-      background: #fff; /* White background */
+      background: #f8f9fa; /* Light background for the hero section */
       color: #222; /* Dark text for contrast */
-      padding: 32px 16px 16px 16px;
+      padding: 40px 20px 32px 20px;
       text-align: center;
-      border-radius: 10px;
-      margin: 32px auto 0 auto;
-      max-width: 900px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 14px;
+      margin: 40px auto 24px auto;
+      max-width: 700px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .columns-hero h2 {
-      margin-bottom: 10px;
-      font-size: 2em;
+    .columns-hero img {
+      width: 90px;
+      height: auto;
+      margin-bottom: 18px;
+    }
+    .columns-hero h1 {
+      font-size: 2.3em;
+      font-weight: bold;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
     }
     .columns-hero p {
-      margin: 0 auto;
-      max-width: 600px;
-      font-size: 1.1em;
-      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 18px auto;
+      font-size: 1.15em;
+      color: #444;
+    }
+    .sustainability-focus {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 18px 20px;
+      margin-top: 10px;
+      max-width: 480px;
+      width: 100%;
+    }
+    .sustainability-focus h2 {
+      font-size: 1.3em;
+      margin-bottom: 8px;
+      color: #1976d2;
+    }
+    .sustainability-focus p {
+      margin: 0;
+      font-size: 1em;
+      color: #333;
+    }
+    /* Columns in a row, each in its own white box */
+    .columns-row .columns-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; /* Spread columns to use all available space */
+      gap: 24px; /* Reasonable gap between columns */
+      max-width: 1100px; /* Make sure all columns fit on most screens */
+      margin: 32px auto;
+      flex-wrap: nowrap; /* Prevent wrapping so all columns stay in one row */
+    }
+    .columns-row .column-box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: none;
+      flex: 1 1 0; /* Allow columns to shrink/grow as needed */
+      padding: 24px 16px;
+      min-width: 0; /* Allow columns to shrink if needed */
+      max-width: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .columns-row .column-box h2 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+    .columns-row .column-box p {
+      font-size: 1em;
+      margin-bottom: 16px;
+    }
+    .columns-row .column-box a {
+      color: #1976d2;
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    @media (max-width: 1100px) {
+      .columns-row .columns-container {
+        gap: 16px;
+        max-width: 100vw;
+      }
+      .columns-row .column-box {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 900px) {
+      .columns-row .columns-container {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+        max-width: 100vw;
+      }
+      .columns-row .column-box {
+        max-width: 100%;
+        min-width: 0;
+        padding: 16px 8px;
+      }
     }
   </style>
 </head>
@@ -93,9 +181,9 @@
 
   <!-- Header / Hero Section -->
   <header>
-    <div>
-      <!-- Ask Copilot to teach you about `.svg` 🙂 -->
-      <img src="img/intel-header-logo.svg" alt="Intel Logo" />
+    <!-- Hero section for the page -->
+    <section class="columns-hero">
+      <img src="img/intel-header-logo.svg" alt="Intel Logo">
       <!-- Main Heading -->
       <h1>
         Sustainability Through the Ages
@@ -107,7 +195,13 @@
         to innovation has shaped a more sustainable future for technology 
         and our planet.
       </p>
-    </div>
+      <div class="sustainability-focus">
+        <h2>Intel's Sustainability Focus</h2>
+        <p>
+          Discover how Intel is leading the way in sustainability through its RISE strategy, net-zero commitment, and efforts in water and waste management.
+        </p>
+      </div>
+    </section>
   </header>
 
   <!-- Timeline Cards Section -->
@@ -313,50 +407,26 @@
     <p>
       Discover how Intel is leading the way in sustainability through its RISE strategy, net-zero commitment, and efforts in water and waste management.
     </p>
-  </section>
 
-  <section>
-    <div>
-      
-      <!-- Column 1 -->
-      <div>
-        <h2>RISE Strategy</h2>
-        <p>
-          Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
-          Intel sets ambitious 2030 goals, including driving industry-wide 
-          progress on climate action, water stewardship, and waste reduction.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
-      </div>
+  <!-- Topics as simple paragraphs under each heading, no indentation and no bullet points -->
+  <section class="sustainability-topics" style="max-width: 900px; margin: 32px auto;">
+    <h2>RISE Strategy</h2>
+    <p>
+      Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, Intel sets ambitious 2030 goals, including driving industry-wide progress on climate action, water stewardship, and waste reduction.
+    </p>
+    <a href="#">Learn More</a>
 
-      <!-- Column 2 -->
-      <div>
-        <h2>Commitment</h2>
-        <p>
-          In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
-          (Scope 1 and 2) by 2040. This commitment builds on decades of 
-          environmental initiatives and partnerships across the semiconductor 
-          industry.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
-      </div>
+    <h2 style="margin-top: 32px;">Commitment</h2>
+    <p>
+      In 2022, Intel pledged to achieve net-zero greenhouse gas emissions (Scope 1 and 2) by 2040. This commitment builds on decades of environmental initiatives and partnerships across the semiconductor industry.
+    </p>
+    <a href="#">Learn More</a>
 
-      <!-- Column 3 -->
-      <div>
-        <h2>Water &amp; Waste</h2>
-        <p>
-          Intel conserves billions of gallons of water annually and 
-          collaborates with local communities to restore watersheds.
-          Intel also upcycles and recycles materials to reduce waste and 
-          advance a circular economy.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
-      </div>
-
-    </div>
+    <h2 style="margin-top: 32px;">Water &amp; Waste</h2>
+    <p>
+      Intel conserves billions of gallons of water annually and collaborates with local communities to restore watersheds. Intel also upcycles and recycles materials to reduce waste and advance a circular economy.
+    </p>
+    <a href="#">Learn More</a>
   </section>
 
   <!-- Subscription Form -->
